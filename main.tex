@@ -1,0 +1,234 @@
+% ---- ETD Document Class and Useful Packages ---- %
+% v1.2.0 released July 7, 2022.
+% https://github.com/k4rtik/uchicago-dissertation
+\documentclass{ucetd}
+
+\usepackage[T1]{fontenc}
+\usepackage{subcaption,graphicx}
+\usepackage{natbib}
+\usepackage{mathtools}  % loads amsmath
+\usepackage{amssymb}    % loads amsfonts
+\usepackage{amsthm}
+
+%added by Karim
+\usepackage{hyperref}
+\usepackage{physics}
+\usepackage{subcaption}
+\usepackage{url}
+
+%Path relative to the main .tex file 
+\graphicspath{ {./images/} }
+
+%% Use these commands to set biographic information for the title page:
+\newcommand{\thesistitle}{Feasability study of a portable device for microparticle sensing}
+\newcommand{\thesisauthor}{Karim Bouzid}
+\department{Génie électrique et informatique}
+\degree{Master of Science}
+\date{12 août 2022}
+
+\title{\thesistitle}
+\author{\thesisauthor}
+
+%% Use these commands to set a dedication and epigraph text
+\dedication{
+    \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Goodlooking}
+    \caption{Candid picture of the author, Karim Bouzid.}
+    \label{fig:Goodlooking}
+\end{figure}
+I would like to thank those persons close to my heart that make my life a paradise on Earth. It would not have been possible if not for the invaluable support and love of those close to me. To them I say a heartfelt thank you! And I'd like to congratulate you, who is currently reading this, for interesting yourself in a subject that will deeply impact the wellbeing of generations to come, especially considering how "nothing is received with so much reluctance as instruction". \par
+\vskip \baselineskip
+I dedicate this memoir to my dear friend Frédéric Langlois.
+}
+\epigraph{
+    This memoir is written for those who will eventually benefit from it. 
+    \vskip \baselineskip
+    \textit{"Like rowing a boat,} \par
+    \textit{We enter the future backwards.} \par
+    \textit{All we see are the scenes of the past,} \par
+    \textit{And no one cannot see the views of tomorrow."} \par
+    \vskip \baselineskip
+    A better future lies beyond the horizon through our individual actions. Despite the obstacles one faces when rowing toward a far away goal, it is important to remember that where one currently stands matters not as much as where one strives toward.
+}
+
+\usepackage{doi}
+\usepackage{xurl}
+\hypersetup{bookmarksnumbered,
+            unicode,
+            linktoc=all,
+            pdftitle={\thesistitle},
+            pdfauthor={\thesisauthor},
+            pdfsubject={},                                % Add subject/description
+            pdfkeywords={Impedance, Microorganisms, Microfluidics, Bioinstrumentation, Electronics, Signals, Processing},
+            pdfborder={0 0 0}}
+% See https://github.com/k4rtik/ucetd-latex/issues/1
+\makeatletter
+\let\ORG@hyper@linkstart\hyper@linkstart
+\protected\def\hyper@linkstart#1#2{%
+  \lowercase{\ORG@hyper@linkstart{#1}{#2}}}
+\makeatother
+
+\begin{document}
+%% Basic setup commands
+% If you don't want a title page comment out the next line and uncomment the line after it:
+\maketitle
+%\omittitle
+
+% These lines can be commented out to disable the copyright/dedication/epigraph pages
+\makecopyright
+\makededication
+\makeepigraph
+
+
+%% Make the various tables of contents
+\tableofcontents
+\listoffigures
+
+\acknowledgments
+\input{Acknowledgment.tex}
+\abstract
+\input{Abstract.tex}
+
+\mainmatter
+% Main body of text follows
+
+\chapter{Introduction}
+\input{Introduction.tex}
+
+\chapter{Microorganisms, taxonomy, and cataloguing}
+\input{Taxonomy.tex}
+
+\chapter{Biosensors}
+\label{chap:Biosensors}
+\input{Biosensors.tex}
+\section{Impedimetric sensors}
+\input{Impedance}
+%Maybe add Impedimetric biosensor section and replace the next chapter by seomthing else
+%add choice of impedimetric vs other techniques based on merit and design considerations
+
+%CITE JESSE GREENER AND SANDRO CARRARA ARTICLES
+%Research Nematodes
+\chapter{Impedimetric sensors applied to biology}
+\label{chap:ImpedimetricSensors}
+\input{ImpedimetricMicrobiology.tex}
+\section{Electrochemical Impedance Spectroscopy}
+\label{sec:EIS}
+\input{EIS.tex}
+\subsection{Electric Cell Substrate Impedance Sensing}
+\input{ECIS.tex}
+\section{Single-cell modelling}
+\label{sec:CellModel}
+\input{CellModelling.tex}
+\section{Electrode design}
+\label{sec:ElectrodeDesign}
+\input{Electrode.tex}
+\section{Impedance Flow Cytometry}
+\label{sec:IFC}
+\input{IFC.tex}
+
+\chapter{Electronic modules}
+\label{chap:Electronics}
+\input{ElectronicsModules}
+\section{Transimpedance Amplifiers}
+\label{sec:TIA}
+\input{TIA.tex}
+\section{Programmable gain array}
+\label{sec:PGA}
+\input{PGA}
+\section{Lock-In Amplifiers}
+\label{sec:LIA}
+\input{LIA.tex}
+\section{Phase-Sensitive Detectors}
+\label{sec:PSD}
+\input{PSD.tex}
+\subsection{Square excitation signals}
+\label{sub:SquareSignal}
+\input{SquareSignal.tex}
+\section{Quadrature generators}
+\label{sec:QuadratureGenerator}
+\input{QuadratureGenerator.tex}
+\section{Microcontroller Unit}
+\label{sec:MCU}
+\input{MCU.tex}
+\section{Analog-to-Digital Converters}
+\label{sec:ADC}
+\input{ADC.tex}
+\section{Power-supplies}
+\label{sec:Power-Supplies}
+\input{Power-Supplies.tex}
+
+\chapter{Practical IFC System}
+\input{PracticalIFCSystemSection}
+\section{Impedance-sensing system principles}
+\label{sec:ImpedancePrinciples}
+\input{PracticalCircuit.tex}
+\section{Example measurement}
+\input{ExampleMeasurement.tex}
+\section{PCB design}
+\input{PCB.tex}
+\section{MCU processes}
+\label{sec:MCUprocesses}
+\input{LoopCode.tex}
+
+\chapter{Microfluidics}
+\label{chap:Microfluidics}
+\input{Microfluidics}
+\section{Fluid dynamics and design considerations}
+\input{FluidDynamics.tex}
+\section{Bubbles in microfluidics systems}
+\input{Bubbles.tex}
+\section{Microfabrication techniques}
+\label{sec:FabricationMicrofluidics}
+\input{Microfabrication.tex}
+\section{Practical microfluidic system}
+\label{sec:PracticalMicrofluidic}
+\input{PracticalMicrofluidic}
+
+\chapter{Measurement results}
+\input{ResultsSection}
+\section{Discrete electrical measurements}
+\label{sec:DiscreteResults}
+\input{DiscreteResults}
+\section{Saline water measurements}
+\input{SalineResults}
+\section{Microbeads measurements}
+\label{sec:BeadsResults}
+\input{BeadsResults}
+%\section{Cells measurements}
+%\input{CellResults}
+\section{Big data}
+\label{sec:BigData}
+\input{BigData}
+\section{Performances}
+\input{Performances}
+
+\chapter{Conclusion}
+\input{Conclusion}
+
+%\chapter{Inserted article}
+%Measured performances in a table. Cite Bouzid2022. 
+
+% Format a LaTeX bibliography
+\makebibliography
+%\nocite{*} %Check if I want to cite all references or only those in the text
+
+\appendix
+\chapter{Capacitance biosensors}
+\label{app:CapacitanceBiosensors}
+\input{CapacitanceBiosensors}
+\chapter{Impedance Microbiology}
+\input{IM}
+\chapter{Impedance analyzer IC AD5933}
+\input{AD5933}
+\chapter{3d-printed case}
+\input{3dCase}
+\chapter{Ecochip EMBC 2020}
+\label{app:Ecochip}
+\input{Ecochip.tex}
+\chapter{NEWCAS 2022}
+\input{NEWCAS}
+\chapter{Code}
+\input{MatlabCodes}
+
+\end{document}

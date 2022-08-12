@@ -1,0 +1,10 @@
+The IFC system uses a MSP430F5529 as a Microcontroller Unit (MCU). The MSP430F5529 is a mixed signal MCU uses for low-power applications. It features a 1.8V to 3.6V power-supply, a 16-bit RISC CPU, a 25MHz maximum Master Clock (MCLK) powered by a digital Frequency-Locked Loop (FLL) powered by a low frequency 32kHz watch crystal, 12-bit ADCs, 63 I/O pins, a 3-channel DMA with an extended memory, 16-bit timers, timers, interrupts, comparators, 5 different Low-Power Modes (LPM). It supports communication with UART, enhanced UART, SPI, I2C, IrDA, USB 2.0, and is programmed/debuggued by JTAG. It dissipates about 6 mW when active and 24 $\mu$W when in LPM. \par
+
+The impedance-sensing system uses:
+\begin{itemize}
+	\item 6 channels of the 12-bit ADCs to measure: $\Re(V_{PSD-\omega_0})$ and $\Im(V_{PSD-\omega_0})$ of the two electrode responses, the 5V $V_{DD}$ power-supply, and the battery voltage. 
+	\item A 32-kHz watch crystal creates a MCLK oscillating at 16MHz with the PLL. 
+	\item The I2C module used to program the Si5351 and modify the excitation signal frequency. 
+	\item The UART module used with the external IC FT232RL to convert the sampled data to RS232 to be transfered to a nearby computer.
+	\item A couple of I/O pins to enable the power-supplies, monitor the status of the system by activating LEDs, modify the gains of the PGA on the fly, modify the phase of the measurement by enabling or disabling the flip-flops of the quadrature generator, and reset the MCU at the press of a button. 
+\end{itemize}
